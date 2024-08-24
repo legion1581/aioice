@@ -297,6 +297,11 @@ class Connection:
     :param transport_policy: Transport policy.
     """
 
+    #: Local username, automatically set to a random value.
+    local_username = random_string(4)
+    #: Local password, automatically set to a random value.
+    local_password = random_string(22)
+
     def __init__(
         self,
         ice_controlling: bool,
@@ -312,10 +317,6 @@ class Connection:
         transport_policy: TransportPolicy = TransportPolicy.ALL,
     ) -> None:
         self.ice_controlling = ice_controlling
-        #: Local username, automatically set to a random value.
-        self.local_username = random_string(4)
-        #: Local password, automatically set to a random value.
-        self.local_password = random_string(22)
         #: Whether the remote party is an ICE Lite implementation.
         self.remote_is_lite = False
         #: Remote username, which you need to set.
